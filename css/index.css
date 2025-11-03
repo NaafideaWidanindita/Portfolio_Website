@@ -1,0 +1,337 @@
+/* INDEX.CSS - Updated with additional animations (existing ones unchanged) */
+.hero-section {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem 0;
+}
+
+.hero-title {
+    order: 2;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    /* Animasi geser dari kanan: Slide in dari kanan, repeat setiap 10 detik (UNCHANGED) */
+    animation: slideInRight 6s ease-in-out infinite;
+    transform: translateX(0); /* Posisi awal */
+    opacity: 1;
+}
+
+@keyframes slideInRight {
+    0% {
+        transform: translateX(100%); /* mulai dari kanan */
+        opacity: 0;
+    }
+    20% {
+        transform: translateX(0); /* geser masuk ke tengah */
+        opacity: 1;
+    }
+    90% {
+        transform: translateX(0); /* tetap di tengah (pause 2 detik) */
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-100%); /* keluar ke kiri */
+        opacity: 0;
+    }
+}
+
+.hero-title-wrapper {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+
+/* Styling untuk Open to Work badge (UNCHANGED) */
+.open-to-work {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.status-dot {
+    width: 12px;
+    height: 12px;
+    background-color: var(--success-color); /* Hijau sukses */
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite; /* Animasi pulse seperti lampu menyala */
+    display: inline-block;
+    box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7); /* Shadow untuk efek glow */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(40, 167, 69, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
+    }
+}
+
+.status-text {
+    color: var(--success-color);
+    margin-left: 0.5rem;
+}
+
+/* Styling untuk Profile Image - Pastikan ukuran tetap proporsional di col-lg-5 */
+.profile-img {
+    order: 1;
+    border: 3px solid var(--border-color); /* Border transparan/profesional */
+    transition: border-color 0.3s ease; /* Smooth transition saat theme change */
+    max-width: 100%; /* Tetap dalam batas kolom (col-lg-5) */
+    width: auto; /* Biarkan Bootstrap handle width */
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Center di mobile */
+}
+
+[data-theme="dark"] .profile-img {
+    border-color: var(--border-color); /* Di dark theme, border lebih gelap untuk kontras */
+}
+
+/* Styling untuk Button Secondary (Contact Me) - Outline transparan, beda dari primary (UNCHANGED) */
+.btn-secondary-custom {
+    border: 2px solid var(--primary-color); /* Border tetap 2px solid primary */
+    color: var(--primary-color); /* Teks warna primary */
+    background: transparent; /* Tengah transparan, tidak ada warna */
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease; /* Transisi smooth */
+}
+
+.btn-secondary-custom:hover {
+  transform: translateY(-3px);
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+  color: rgb(0, 0, 0);
+}
+
+/* Styling untuk Quotes Kotak (baru) (UNCHANGED) */
+.quote-section {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    margin-top: 15px;
+}
+.quote-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 20px 20px 0 0;
+}
+.quote-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+.quote-text {
+    font-family: 'Playfair Display', serif; /* Font keren: Elegant serif untuk quotes */
+    font-size: 2.5rem;
+    font-weight: 700;
+    font-style: italic;
+    color: rgb(48, 48, 48);
+    margin-bottom: 1rem;
+    opacity: 0.9;
+    animation: fadeInUp 1s ease-out forwards; /* Animasi fade-in subtle (UNCHANGED) */
+    line-height: 1.2;
+}
+[data-theme="dark"] .quote-text {
+    color: #f0f0f081; /* Warna teks lebih terang di dark mode */
+}
+.quote-author {
+    font-family: 'Poppins', sans-serif; /* Kembali ke Poppins untuk nama */
+    font-size: 1.2rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--primary-color);
+    display: block;
+    margin-top: 1rem;
+}
+
+/* Keyframes fadeInUp LAMA (UNCHANGED - tetap untuk quotes saja) */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 0.9;
+        transform: translateY(0);
+    }
+}
+
+/* Laptop container (sudah ada, tapi sesuaikan responsif) (UNCHANGED) */
+.laptop-container {
+  position: relative;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  animation: float 4s ease-in-out infinite;
+}
+
+.laptop-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.laptop-base {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 15px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  filter: blur(4px);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+/* TAMBAHAN BARU: Keyframes fadeInUpFull (untuk animasi umum, opacity penuh = 1 agar teks hitam tetap tajam) */
+@keyframes fadeInUpFull {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1; /* Penuh, tidak pudar! */
+        transform: translateY(0);
+    }
+}
+
+/* TAMBAHAN BARU: Keyframe pulseAnimation untuk profile img (seperti di about/projects) */
+@keyframes pulseAnimation {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 204, 17, 0.4);
+    }
+    70% {
+        transform: scale(1.02);
+        box-shadow: 0 0 0 10px rgba(255, 204, 17, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 204, 17, 0);
+    }
+}
+
+/* TAMBAHAN BARU: Animation Classes (pakai keyframes baru, opacity penuh) */
+.fade-in-up {
+    animation: fadeInUpFull 0.8s ease-out forwards; /* Pakai yang baru, opacity 1 */
+    opacity: 0;
+}
+
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+.delay-4 { animation-delay: 0.8s; }
+.delay-5 { animation-delay: 1s; }
+.delay-6 { animation-delay: 1.2s; }
+.delay-7 { animation-delay: 1.4s; }
+.delay-8 { animation-delay: 1.6s; }
+.delay-9 { animation-delay: 1.8s; }
+.delay-10 { animation-delay: 2s; }
+
+.pulse-animation {
+    animation: pulseAnimation 2s infinite;
+}
+
+/* TAMBAHAN BARU: Enhanced hover for buttons (additional, without changing existing transitions) */
+.btn-primary-custom:hover,
+.btn-secondary-custom:hover {
+    box-shadow: 0 10px 20px rgba(255, 204, 17, 0.3);
+}
+
+/* TAMBAHAN BARU: Responsive adjustments for animations */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    /* Responsif: Pastikan text center di mobile */
+    .order-2 {
+        text-align: center;
+    }
+
+    .profile-img {
+        max-width: 200px; /* Lebih kecil di mobile, tetap proporsional */
+        margin-bottom: 1rem;
+    }
+
+    .laptop-container {
+        max-width: 250px;
+        margin: auto;
+    }
+
+    /* Open to Work: Lebih kecil di mobile */
+    .open-to-work {
+        font-size: 0.9rem;
+    }
+
+    /* Buttons: Tetap berdampingan (row) di mobile, tapi lebih kecil */
+    .d-flex.gap-2 {
+        flex-direction: row; /* Tetap row, tidak column */
+        flex-wrap: wrap; /* Wrap jika layar sangat kecil */
+        justify-content: center; /* Center buttons di mobile */
+        gap: 1rem; /* Jarak lebih besar di mobile */
+    }
+
+    .btn-secondary-custom,
+    .btn-primary-custom {
+        padding: 0.6rem 1.5rem; /* Padding lebih kecil */
+        font-size: 0.9rem; /* Teks lebih kecil */
+        min-width: 140px; /* Ukuran kotak minimal agar fit, tapi menyesuaikan layar */
+        flex: 1; /* Auto-adjust width */
+        max-width: none; /* Biarkan wrap jika perlu */
+    }
+
+    /* Reduce delays on mobile for faster loading */
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    .delay-5 { animation-delay: 0.5s; }
+    .delay-6 { animation-delay: 0.6s; }
+    .delay-7 { animation-delay: 0.7s; }
+    .delay-8 { animation-delay: 0.8s; }
+    .delay-9 { animation-delay: 0.9s; }
+    .delay-10 { animation-delay: 1s; }
+}

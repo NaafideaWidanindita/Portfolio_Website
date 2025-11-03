@@ -1,0 +1,853 @@
+/* PROJECTS.CSS - Aligned to theme, elegant/professional, toned-down animations */
+.project-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color);
+    height: 100%;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.project-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.02); /* Subtle, professional zoom */
+}
+
+.project-info {
+    padding: 1.5rem;
+}
+
+.project-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.project-year {
+    color: var(--primary-color);
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.project-tech {
+    margin-bottom: 1rem;
+}
+
+.tech-badge {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    color: #111; /* Dark text on yellow for readability */
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Toned-Down Keyframe Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px); /* Subtler slide */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes staggerFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation Classes - Shorter durations */
+.fade-in-up {
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.15s; }
+.delay-3 { animation-delay: 0.2s; }
+.delay-4 { animation-delay: 0.25s; }
+.delay-5 { animation-delay: 0.3s; }
+
+.stagger-item {
+    animation: staggerFadeIn 0.4s ease-out forwards;
+    opacity: 0;
+    display: inline-block;
+}
+
+/* Modal Styles - Elegant, Professional */
+.project-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1050;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-modal.show {
+    opacity: 1;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Subtle dark overlay */
+    backdrop-filter: blur(3px);
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    max-width: 800px; /* Tighter for focus */
+    max-height: 90vh;
+    width: 100%;
+    height: auto;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); /* Subtle professional shadow */
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.project-modal.show .modal-content {
+    transform: scale(1);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); /* Theme-aligned gold gradient */
+    color: #111; /* Dark text on light gradient for pro readability */
+    border-radius: 15px 15px 0 0;
+    position: relative;
+}
+
+.modal-title {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.project-year-modal {
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.close-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    font-size: 1.8rem;
+    color: #111;
+    cursor: pointer;
+    padding: 0.5rem;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.close-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* New: Hero Section for Gallery Below Title */
+.modal-hero {
+    padding: 0 2rem 1.5rem;
+    margin-top: 20px;
+    border-bottom: 1px;
+    background-color: var(--card-bg);
+}
+
+.modal-hero h4 {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px
+}
+
+.modal-body {
+    padding: 0; /* More space for elegance */
+    margin: 0;
+}
+
+.modal-section {
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out forwards; /* No stagger here */
+}
+
+.modal-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.modal-section h4 {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    padding: 0;
+}
+
+.modal-section p {
+    line-height: 1.7;
+    color: var(--text-color);
+    /* font-size: smaller; */
+    margin-top: 1rem;
+}
+
+.feature-list {
+    font-size: smaller;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.feature-item {
+    padding: 0rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.feature-item::before {
+    content: "•"; /* Simple professional bullet */
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.detail-subsection {
+    margin-bottom: 1rem;
+    padding: 1.25rem;
+    background-color: rgba(255, 255, 255, 0.05); /* Subtle, theme-agnostic (white tint on light, transparent on dark) */
+    border-radius: 8px;
+    border-left: 2px solid var(--primary-color); /* Elegant accent */
+}
+
+.detail-subsection h6 {
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.detail-subsection p {
+    margin-bottom: 0;
+    font-size: smaller;
+    line-height: 1.4;
+}
+
+/* Gallery Styles - Professional Carousel */
+.project-gallery {
+    margin-top: 1rem; /* No extra margin in hero */
+}
+
+.carousel {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+}
+
+.gallery-img {
+    object-fit: cover;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+    opacity: 10;
+    transition: opacity 0.3s ease;
+    filter: invert(1);
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 0.7;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-image: none !important; /* hilangkan icon bawaan */
+    width: auto;
+    height: auto;
+    color: var(--primary-color); /* pakai warna tema */
+}
+
+.carousel-control-prev::after {
+    content: "<";
+    font-weight: bolder;
+    font-size: 25px;
+}
+
+.carousel-control-next::after {
+    content: ">";
+    font-weight: bolder;
+    font-size: 25px;
+}
+
+.carousel-indicators [data-bs-target] {
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+    margin: 0 4px;
+}
+
+.carousel-indicators .active {
+    background-color: #111; /* Dark on yellow for contrast */
+    transform: none; /* No pop, keep flat */
+}
+
+.modal-footer {
+    padding: 1.5rem 2.5rem;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+    border-radius: 0 0 15px 15px;
+    text-align: center;
+}
+
+.teaser {
+    margin: 0;
+    color: var(--primary-color);
+    font-size: 0.95rem;
+    font-weight: 400; /* Normal, professional */
+}
+
+/* Smooth scroll */
+.modal-content {
+    scroll-behavior: smooth;
+}
+
+/* Responsive - Toned-Down on Mobile */
+@media (max-width: 768px) {
+    .delay-1, .delay-2, .delay-3, .delay-4, .delay-5 { animation-delay: 0.05s; } /* Minimal delays */
+    
+    .project-card:hover {
+        transform: translateY(-3px);
+    }
+    
+    .modal-content {
+        max-width: 95%;
+        border-radius: 10px;
+    }
+    
+    .modal-header,
+    .modal-hero,
+    .modal-body,
+    .modal-footer {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+    
+    .modal-section {
+        animation-duration: 0.3s; /* Faster, less noticeable */
+        margin-bottom: 1.5rem;
+    }
+    
+    .gallery-img {
+        height: 250px;
+    }
+    
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 8%;
+    }
+}
+
+@media (max-width: 576px) {
+    .modal-title {
+        font-size: 1.4rem;
+    }
+    
+    .modal-section h4 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .tech-badge {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.6rem;
+    }
+    
+    .gallery-img {
+        height: 200px;
+    }
+}
+
+/* Theme Button Override for View Project */
+.view-project-btn {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.view-project-btn:hover {
+    background-color: var(--primary-color);
+    color: #111;
+    transform: none; /* No lift, professional */
+}
+/* ===== Existing Modal Styles (Keep & Tweak) ===== */
+/* ... (semua styles modal existing seperti .project-modal, .modal-overlay, .modal-content dasar, dll.) ... */
+
+/* ===== Modal: make inner row scroll and follow rounded corners ===== */
+.project-modal .modal-content {
+  height: 90vh;               /* tetapkan tinggi modal agar ada area scroll */
+  max-height: 90vh;
+  border-radius: 20px;        /* memastikan sudut melengkung (tingkatkan dari 15px jika mau lebih bulat) */
+  overflow: hidden;           /* clip isi agar scrollbar ikut melengkung */
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card-bg); /* Pastikan background match untuk blend scrollbar */
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); /* Existing shadow */
+}
+
+/* header/footer tidak ikut scroll */
+.project-modal .modal-content > .modal-header,
+.project-modal .modal-content > .modal-footer {
+  flex: 0 0 auto;             /* Fixed size, tidak shrink/expand */
+  z-index: 2;                 /* Pastikan di atas content scroll */
+}
+
+/* buat ROW (isi modal) jadi area yang scroll */
+.project-modal .modal-content > .row {
+  flex: 1 1 auto;             /* Ambil sisa ruang, bisa expand */
+  overflow-y: auto;           /* Scroll vertikal di sini saja */
+  overflow-x: hidden;         /* No horizontal */
+  -webkit-overflow-scrolling: touch; /* Smooth scroll di iOS/Safari */
+  box-sizing: border-box;
+  padding: 0 1.5rem 1.5rem;   /* Ruang di sisi (kiri/kanan) dan bawah; adjust untuk ruang scrollbar */
+  margin: 0;                  /* No margin agar menempel header/footer */
+  scrollbar-width: thin;      /* Firefox: thin scrollbar */
+  scrollbar-color: var(--primary-color) var(--card-bg); /* Firefox: warna thumb/track */
+}
+
+/* Sembunyikan native scrollbar di IE/Edge jika konflik */
+.project-modal .modal-content > .row {
+  -ms-overflow-style: none;   /* Edge/IE: hide native */
+}
+
+/* Pastikan isi dalam kolom tidak punya overflow yang memaksa tinggi */
+.modal-hero, 
+.modal-body {
+  min-height: 0;              /* Penting untuk flex child di overflow container */
+  flex-shrink: 0;             /* Jangan shrink kolom jika content panjang */
+}
+
+/* ===== Scrollbar Styling - Enhanced dengan Warna Vivid ===== */
+/* WebKit (Chrome/Safari) - Custom warna lebih colorful */
+.project-modal .modal-content > .row::-webkit-scrollbar {
+  width: 10px;                /* Lebar scrollbar (tingkatkan dari 8px untuk lebih visible) */
+}
+
+.project-modal .modal-content > .row::-webkit-scrollbar-track {
+  background: var(--card-bg); /* Background netral (match modal) */
+  border-radius: 20px;        /* Sama dengan modal radius, agar ikut melengkung */
+  margin: 0 0 20px 0;         /* Margin bawah untuk clip ujung dengan rounded corners */
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05); /* Subtle inner shadow untuk depth */
+}
+
+.project-modal .modal-content > .row::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary-color), var(--secondary-color)); /* Gradient warna dari primary ke secondary untuk vivid effect */
+  border-radius: 20px;        /* Lengkung match modal */
+  border: 2px solid var(--card-bg); /* Border untuk "blend" dan hindari clip tajam */
+  opacity: 0.8;               /* Sedikit transparan agar tidak terlalu solid */
+  transition: all 0.3s ease;  /* Smooth hover */
+  min-height: 40px;           /* Min tinggi thumb agar mudah drag */
+}
+
+.project-modal .modal-content > .row::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--secondary-color), var(--primary-color)); /* Reverse gradient on hover */
+  opacity: 1;                 /* Full opacity saat hover */
+  transform: scale(1.1);      /* Subtle scale untuk interaksi (opsional, hapus jika terlalu animasi) */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Shadow saat hover untuk "pop" */
+}
+
+.project-modal .modal-content > .row::-webkit-scrollbar-thumb:active {
+  opacity: 0.9;               /* Sedikit redup saat drag */
+}
+
+/* Corner (sudut kanan bawah) - Blend dengan modal */
+.project-modal .modal-content > .row::-webkit-scrollbar-corner {
+  background: var(--card-bg);
+  border-radius: 0 0 20px 0;  /* Lengkung di sudut bawah kanan */
+}
+
+/* Smooth scroll behavior untuk row */
+.project-modal .modal-content > .row {
+  scroll-behavior: smooth;
+}
+
+/* Responsive - Adjust warna/lebar di mobile */
+@media (max-width: 768px) {
+  .project-modal .modal-content > .row::-webkit-scrollbar {
+    width: 8px;               /* Lebih tipis di mobile */
+  }
+  
+  .project-modal .modal-content > .row::-webkit-scrollbar-thumb {
+    border-radius: 15px;      /* Radius lebih kecil di mobile */
+    min-height: 30px;
+  }
+  
+  /* Carousel di mobile */
+  .project-gallery .carousel-indicators [data-bs-target] {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+
+#carouselThumbnails {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  margin-top: 1rem;
+  width: 100%; /* agar pas dengan lebar slider utama */
+  overflow: hidden; /* sembunyikan thumbnail di luar area */
+  position: relative;
+}
+
+#carouselThumbnails .thumb-wrapper {
+  display: flex;
+  gap: 8px;
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+#carouselThumbnails img {
+  width: 60px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  flex-shrink: 0;
+  transition: border-color 0.3s ease;
+}
+
+#carouselThumbnails img.active-thumb {
+  border-color: var(--primary-color);
+}
+
+#carouselThumbnails img:hover {
+  border-color: var(--secondary-color);
+}
+
+/* Tombol navigasi thumbnail */
+#thumbPrevBtn, #thumbNextBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  width: 30px;
+  height: 30px;
+  color: var(--primary-color);
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  z-index: 10;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease;
+}
+
+#thumbPrevBtn:hover, #thumbNextBtn:hover {
+  background-color: var(--primary-color);
+  color: #111;
+}
+
+#thumbPrevBtn {
+  left: -40px; /* di kiri container thumbnail */
+}
+
+#thumbNextBtn {
+  right: -40px; /* di kanan container thumbnail */
+}
+
+/* Container utama modal body: 2 kolom */
+.modal-body-container {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem 2rem 2rem 2rem;
+  box-sizing: border-box;
+  max-width: 100%;
+  flex-wrap: wrap; /* responsif: kolom bisa turun */
+}
+
+/* Kiri: slider + thumbnails + features + technologies */
+.modal-left {
+  flex: 1 1 60%; /* 60% lebar, bisa mengecil */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+/* Kanan: contribution, challenges, solutions, github */
+.modal-right {
+  flex: 1 1 35%; /* 35% lebar, bisa mengecil */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: var(--text-color);
+  font-size: 0.95rem;
+}
+
+/* Judul section di kanan */
+.modal-right section h4 {
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 1.15rem;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.25rem;
+}
+
+/* Paragraph di kanan */
+.modal-right section p {
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Tombol GitHub full width */
+#modalGithubBtn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--primary-color);
+  border-radius: 8px;
+  color: var(--primary-color);
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+#modalGithubBtn:hover {
+  background-color: var(--primary-color);
+  color: #111;
+}
+
+/* Slider utama */
+#mainCarousel {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  margin-bottom: 1rem;
+}
+
+/* Carousel images */
+#mainCarousel .carousel-item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Thumbnail container */
+#carouselThumbnails {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+/* Wrapper untuk geser thumbnail */
+#carouselThumbnails .thumb-wrapper {
+  display: flex;
+  gap: 8px;
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+/* Thumbnail gambar */
+#carouselThumbnails img {
+  width: 60px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  flex-shrink: 0;
+  transition: border-color 0.3s ease;
+}
+
+#carouselThumbnails img.active-thumb {
+  border-color: var(--primary-color);
+}
+
+#carouselThumbnails img:hover {
+  border-color: var(--secondary-color);
+}
+
+/* Tombol navigasi thumbnail */
+#thumbPrevBtn, #thumbNextBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  width: 30px;
+  height: 30px;
+  color: var(--primary-color);
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  z-index: 10;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease;
+}
+
+#thumbPrevBtn:hover, #thumbNextBtn:hover {
+  background-color: var(--primary-color);
+  color: #111;
+}
+
+#thumbPrevBtn {
+  left: -40px;
+}
+
+#thumbNextBtn {
+  right: -40px;
+}
+
+/* Section fitur dan teknologi di kiri */
+.modal-left section {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.modal-left section h4 {
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  font-size: 1.2rem;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.3rem;
+}
+
+.feature-list {
+  list-style: none;
+  padding-left: 1.2rem;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  line-height: 1.5;
+}
+
+.feature-item {
+  position: relative;
+  margin-bottom: 0.4rem;
+  padding-left: 1.2rem;
+}
+
+.feature-item::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 1.3rem;
+  line-height: 1;
+  top: 0;
+}
+
+/* Teknologi badge */
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tech-badge {
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  color: #111;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  user-select: none;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .modal-body-container {
+    flex-direction: column;
+  }
+  .modal-left, .modal-right {
+    flex: 1 1 100%;
+  }
+  #thumbPrevBtn {
+    left: 0;
+  }
+  #thumbNextBtn {
+    right: 0;
+  }
+}

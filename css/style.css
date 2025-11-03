@@ -1,0 +1,225 @@
+:root {
+  /* Light theme */
+  --primary-color: #ffcc11;       /* Kuning khas */
+  --secondary-color: #d4af37;     /* Kuning emas, versi lembut */
+  --text-color: #1a1a1a;          /* Teks utama */
+  --bg-color: #f8f2dc;            /* Background terang */
+  --card-bg: #ffffff;             /* Card putih */
+  --border-color:  #fdfd7c80;      /* Border abu tipis */
+  --success-color: #28a745;       /* Hijau sukses */
+}
+
+[data-theme="dark"] {
+  /* Dark theme */
+  --primary-color: #f5c518;       /* Kuning khas */
+  --secondary-color: #bfa005;     /* Kuning tua */
+  --text-color: #eaeaea;          /* Teks terang */
+  --bg-color: #121212;            /* Background utama gelap */
+  --card-bg: #1e1e1e;             /* Card abu gelap */
+  --border-color: #2a2a2a;        /* Border halus */
+  --success-color: #34d399;       /* Hijau sukses */
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+  padding-top: 70px; /* supaya konten nggak ketiban navbar */
+  overflow-x: hidden;
+}
+
+/* Scrollbar Styling */
+body::-webkit-scrollbar {
+  width: 12px; /* Lebar scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--bg-color); /* background track biar nyatu sama tema */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color); /* warna kuning dari tema */
+  border-radius: 10px;                    /* biar ujungnya bulat */
+  border: 2px solid var(--bg-color);      /* kasih jarak, efek elegant */
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: var(--secondary-color); /* saat hover pakai kuning emas */
+}
+
+/* Firefox Support */
+* {
+  scrollbar-color: var(--primary-color) var(--bg-color); /* thumb & track */
+}
+
+
+
+
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--bg-color);
+  border-bottom: 2px solid var(--border-color);
+  padding: 1rem 0;
+  z-index: 1000;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  color: var(--primary-color);
+  cursor: default;
+}
+.navbar-brand:hover {
+  color: var(--primary-color) !important; /* tahan biar ga berubah */
+}
+
+.nav-link {
+  color: var(--text-color);
+  font-weight: 500;
+  position: relative;
+  margin: 0 0.5rem;
+}
+
+.nav-link:hover {
+  color: var(--primary-color);
+  opacity: 0.2;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: var(--primary-color);
+  transition: width 0.3s;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* === Navbar Active State === */
+.active-nav {
+  color: var(--primary-color) !important;
+  font-weight: 600;
+}
+
+.active-nav::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: var(--primary-color);
+}
+
+
+.theme-toggle {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.theme-toggle:hover {
+  transform: rotate(30deg);
+}
+
+/* Fix Super Sederhana: Garis Tiga Navbar Kelihatan di Dark Theme (Pakai Filter) */
+.navbar-toggler-icon {
+  filter: brightness(0) saturate(100%) invert(20%) sepia(100%) saturate(500%) hue-rotate(30deg) brightness(100%) contrast(100%); /* Default light: Hitam normal */
+  transition: filter 0.3s ease;
+}
+
+/* Khusus Dark Theme: Balik warna garis tiga jadi putih/terang (kontras tinggi) */
+[data-theme="dark"] .navbar-toggler-icon {
+  filter: brightness(0) invert(1); /* Balik hitam jadi putih penuh - Super kontras di dark! */
+}
+
+/* Tambah background subtle untuk tombol (agar tombol kelihatan, opsional) */
+[data-theme="dark"] .navbar-toggler {
+  background-color: rgba(30, 30, 30, 0.5); /* Abu gelap subtle di dark */
+  border-radius: 4px;
+  padding: 0.4rem;
+}
+
+/* Hanya di Mobile */
+@media (max-width: 991.98px) {
+  [data-theme="dark"] .navbar-toggler {
+    background-color: rgba(40, 40, 40, 0.8) !important; /* Lebih kontras di HP dark */
+  }
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  text-align: center;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.btn-primary-custom {
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  border: none;
+  color: #111;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-weight: 500;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-primary-custom:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+  color: white;
+}
+
+.footer {
+  background-color: var(--border-color);
+  border-top: 1px solid var(--bg-color);
+  padding: 2rem 0;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+}
+
+.theme-transition {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-color, #000);
+  opacity: 0;
+  animation: fadeOverlay 3s ease forwards;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+@keyframes fadeOverlay {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+

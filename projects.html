@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naafi'dea Widanindita - Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/projects.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
+</head>
+<body>
+  <!-- Navbar -->
+  <div id="navbar"></div>
+  
+  <!-- Projects Page Content (Hidden by default) -->
+  <div id="projects-page">
+    <section class="py-5">
+      <div class="container">
+        <h2 class="section-title fade-in-up">My Projects</h2>
+        <div class="row g-4">
+          <!-- Project 1 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="project-card fade-in-up delay-3">
+              <div class="project-image">
+                <img src="img/SIK/SIK.png" alt="Employee management system dashboard with analytics and user data" class="project-img">
+              </div>
+              <div class="project-info">
+                <h3 class="project-title">Sistem Informasi Kepegawaian</h3>
+                <div class="project-year">2023 - 2024</div>
+                <div class="project-tech">
+                  <span class="tech-badge stagger-item delay-1">PHP</span>
+                  <span class="tech-badge stagger-item delay-2">AdminLTE + Bootstrap</span>
+                  <span class="tech-badge stagger-item delay-3">MySQL</span>
+                </div>
+                <p class="project-desc">Employee information system with attendance tracking, payroll, and performance management.</p>
+                <button class="btn btn-outline-primary btn-sm view-project-btn" data-project="1">View Project</button>
+              </div>
+            </div>
+          </div>
+          <!-- Project 2 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="project-card fade-in-up delay-5">
+              <div class="project-image">
+                <img src="img/Templating/Templating.png" alt="Document templating system with template selection and editing interface" class="project-img">
+              </div>
+              <div class="project-info">
+                <h3 class="project-title">Website Templating Surat</h3>
+                <div class="project-year">2024 - 2025</div>
+                <div class="project-tech">
+                  <span class="tech-badge stagger-item delay-1">PHP</span>
+                  <span class="tech-badge stagger-item delay-2">Laravel</span>
+                  <span class="tech-badge stagger-item delay-3">Vue.js</span>
+                  <span class="tech-badge stagger-item delay-4">MySQL</span>
+                  <span class="tech-badge stagger-item delay-5">Passport</span>
+                  <span class="tech-badge stagger-item delay-6">Elasticsearch</span>
+                </div>
+                <p class="project-desc">A letter templating system with dynamic content generation and document management.</p>
+                <button class="btn btn-outline-primary btn-sm view-project-btn" data-project="2">View Project</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Project 3 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="project-card fade-in-up delay-5">
+              <div class="project-image">
+                <img src="img/Portofolio/Portfolio.png" alt="Document templating system with template selection and editing interface" class="project-img">
+              </div>
+              <div class="project-info">
+                <h3 class="project-title">Website Portfolio</h3>
+                <div class="project-year">2025</div>
+                <div class="project-tech">
+                  
+                  <span class="tech-badge stagger-item delay-1">HTML</span>
+                  <span class="tech-badge stagger-item delay-2">CSS</span>
+                  <span class="tech-badge stagger-item delay-3">JavaScript</span>
+                </div>
+                <p class="project-desc">A personal portfolio website that showcases my profile, experiences, skills, and projects.</p>
+                <button class="btn btn-outline-primary btn-sm view-project-btn" data-project="3">View Project</button>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Detail Modal - Updated Structure with Hero Gallery -->
+    <div id="projectModal" class="project-modal">
+      <div class="modal-overlay" id="modalOverlay"></div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <h3 class="modal-title" id="modalTitle"></h3>
+            <div class="project-year-modal" id="modalYear"></div>
+          </div>
+          <button class="close-btn" id="closeModal">&times;</button>
+        </div>
+
+        <div class="modal-body row gx-4">
+          <!-- Left: Image slider with thumbnails -->
+          <div class="col-md-7 modal-hero d-flex flex-column align-items-center">
+            <div id="mainCarousel" class="carousel slide w-100" data-bs-ride="carousel" data-bs-interval="5000" data-bs-pause="false">
+              <div class="carousel-inner" id="carouselInner"></div>
+            </div>
+            <!-- <div id="carouselThumbnails" class="d-flex justify-content-center flex-wrap mt-3 gap-2"></div> -->
+            <div id="carouselThumbnails" class="d-flex">
+              <button id="thumbPrevBtn" aria-label="Previous Thumbnails" style="display:none;">&#8249;</button>
+              <div class="thumb-wrapper"></div>
+              <button id="thumbNextBtn" aria-label="Next Thumbnails" style="display:none;">&#8250;</button>
+            </div>
+          </div>
+
+          <!-- Right: Project info -->
+          <div class="col-md-5 modal-body">
+            <section class="modal-section">
+              <h4>Key Features</h4>
+              <ul id="modalFeatures" class="feature-list"></ul>
+            </section>
+
+            <section class="modal-section mt-4">
+              <h4>Technologies</h4>
+              <div class="project-tech" id="modalTech"></div>
+            </section>
+
+            <section class="modal-section mt-4">
+              <h4>My Contribution</h4>
+              <p id="modalContribution" style="font-size: 0.95rem; color: var(--text-color);"></p>
+            </section>
+
+            <section class="modal-section mt-4">
+              <h4>Challenges</h4>
+              <p id="modalChallenges" style="font-size: 0.95rem; color: var(--text-color);"></p>
+            </section>
+
+            <section class="modal-section mt-4">
+              <h4>Solutions</h4>
+              <p id="modalSolutions" style="font-size: 0.95rem; color: var(--text-color);"></p>
+            </section>
+
+            <div class="mt-4 text-center">
+              <a href="#" target="_blank" id="modalGithubBtn" class="btn btn-outline-primary btn-sm w-100">View Source on GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <p class="teaser">Explore more projects to see my full range of skills.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container text-center">
+      <p>&copy; 2023 Naafi'dea Widanindita. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Updated JavaScript for Modal (with gallery in hero position) -->
+  <script>
+    // Project data (customize as needed)
+    const projects = {
+      1: {
+        title: "Sistem Informasi Kepegawaian",
+        year: "Dec 2023 - Jan 2024",
+        tech: ["PHP","AdminLTE + Bootstrap", "MySQL"],
+        features: [
+          "CRUD operations (Create, Read, Update, Delete) for employee data",
+          "Attendance/leave tracking",
+          "Basic payroll management",
+          "Role-based access control (Admin, Employee)"
+        ],
+        images: [
+          "img/SIK/1.png",
+          "img/SIK/2.png",
+          "img/SIK/3.png",
+          "img/SIK/4.png",
+          "img/SIK/5.png",
+          "img/SIK/6.png",
+          "img/SIK/7.png"
+        ],
+        details: {
+          challenges: "Designing a clear database flow so employee, attendance, and leave data can be managed easily.",
+          solutions: "Used MySQL with simple table relations, PHP sessions for login, AdminLTE + Bootstrap for faster UI development.",
+          learnings: "Learned how backend and frontend work together; practiced input validation and database queries.",
+          impact: "Provided a simple HR system prototype for presentation, showing how employee data can be managed more easily."
+        },
+        github: "https://github.com/NaafideaWidanindita/Sistem_Informasi_Kepegawaian.git"
+      },
+      2: {
+        title: "Website Templating Surat",
+        year: "Oct 2024 - May 2025",
+        tech: ["PHP","Laravel", "Vue.js", "MySQL", "Passport", "Elasticsearch"],
+        features: [
+          "CRUD operations for templates and documents",
+          "Approval process for new templates",
+          "Position data management",
+          "Document export and versioning",
+          "Role-based access control"
+        ],
+        images: [
+          "img/Templating/1.png",
+          "img/Templating/2.png",
+          "img/Templating/3.png",
+          "img/Templating/4.png",
+        ],
+        details: {
+          challenges: "Dividing tasks among teams (frontend, backend, security), designing secure APIs, recording user activity logs, and ensuring scalable data search.",
+          solutions: "Implemented Laravel to build the backend APIs, used Elasticsearch for log tracking, and conducted regular team coordination to keep workflows aligned and efficient.",
+          learnings: "Improved collaboration across different roles, deepened understanding of RESTful API development, and gained awareness of system security in backend development.",
+          impact: "Improving efficiency in document creation and management, while reducing manual processes."
+        },
+        github: "https://github.com/Politeknik-PKL/be-templating-surat.git"
+      },
+      3: {
+        title: "Website Portfolio",
+        year: "Sep 2025",
+        tech: ["HTML", "CSS", "Javascript"],
+        features: [
+          "Homepage with a short profile section",
+          "Project section with detailed descriptions and images",
+          "Simple contact form to reach me",
+          "Responsive navigation for both desktop and mobile devices"
+        ],
+        images: [
+          "img/Portofolio/1.png",
+          "img/Portofolio/2.png",
+          "img/Portofolio/3.png",
+          "img/Portofolio/4.png",
+        ],
+        details: {
+          challenges: "Designing a clean and responsive layout that looks good on different screen sizes.",
+          solutions: "Used CSS Flexbox and Grid for layout, and JavaScript for interactivity such as simple animations and a contact form.",
+          learnings: "Gained experience in building a website from scratch using HTML, CSS, and JavaScript, and learned the basics of responsive UI design.",
+          impact: "This website serves as an easily accessible online portfolio, making it simpler to showcase my skills and projects to others."
+        },
+        github: "https://github.com/username/website-portfolio"
+      }
+    };
+
+    // Modal handling functions
+    document.addEventListener('DOMContentLoaded', function() {
+      const modal = document.getElementById('projectModal');
+      const overlay = document.getElementById('modalOverlay');
+      const closeBtn = document.getElementById('closeModal');
+      const viewBtns = document.querySelectorAll('.view-project-btn');
+
+      let carouselInstance = null;
+
+      viewBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const projectId = this.getAttribute('data-project');
+          const project = projects[projectId];
+          if (project) {
+            populateModal(project);
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => modal.classList.add('show'), 10);
+          }
+        });
+      });
+
+      function closeModal() {
+        modal.classList.remove('show');
+        setTimeout(() => {
+          modal.style.display = 'none';
+          document.body.style.overflow = 'auto';
+          if (carouselInstance) {
+            carouselInstance.dispose();
+            carouselInstance = null;
+          }
+        }, 300);
+      }
+
+      closeBtn.addEventListener('click', closeModal);
+      overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.style.display === 'flex') closeModal(); });
+
+      function populateModal(project) {
+        // Header
+        document.getElementById('modalTitle').textContent = project.title;
+        document.getElementById('modalYear').textContent = project.year;
+
+        // Carousel utama
+        const carouselInner = document.getElementById('carouselInner');
+        carouselInner.innerHTML = '';
+        project.images.forEach((imgSrc, idx) => {
+          const div = document.createElement('div');
+          div.className = 'carousel-item' + (idx === 0 ? ' active' : '');
+          const img = document.createElement('img');
+          img.src = imgSrc;
+          img.alt = `${project.title} Screenshot ${idx + 1}`;
+          img.className = 'd-block w-100 gallery-img';
+          div.appendChild(img);
+          carouselInner.appendChild(div);
+        });
+
+        // Inisialisasi carousel Bootstrap
+        const carouselElement = document.getElementById('mainCarousel');
+        if (carouselInstance) carouselInstance.dispose();
+        carouselInstance = new bootstrap.Carousel(carouselElement, {
+          interval: 5000,
+          ride: 'carousel',
+          pause: false,
+          wrap: true
+        });
+
+        // Batch thumbnail setup
+        const thumbnailsContainer = document.querySelector('#carouselThumbnails .thumb-wrapper');
+        const thumbPrevBtn = document.getElementById('thumbPrevBtn');
+        const thumbNextBtn = document.getElementById('thumbNextBtn');
+        thumbnailsContainer.innerHTML = '';
+
+        // Buat semua thumbnail
+        project.images.forEach((imgSrc, idx) => {
+          const thumb = document.createElement('img');
+          thumb.src = imgSrc;
+          thumb.alt = `Thumbnail ${idx + 1}`;
+          if (idx === 0) thumb.classList.add('active-thumb');
+          thumb.dataset.index = idx;
+          thumb.addEventListener('click', () => {
+            carouselInstance.to(idx);
+          });
+          thumbnailsContainer.appendChild(thumb);
+        });
+
+        // Variabel batch thumbnail
+        const maxVisible = 5;
+        let currentBatch = 0;
+        const totalBatches = Math.ceil(project.images.length / maxVisible);
+
+        // Fungsi update tampilan batch thumbnail
+        function updateThumbnailBatch() {
+          const shiftX = -currentBatch * (60 + 8) * maxVisible; // width + gap * maxVisible
+          thumbnailsContainer.style.transform = `translateX(${shiftX}px)`;
+
+          // Tampilkan/hide tombol prev/next
+          thumbPrevBtn.style.display = currentBatch > 0 ? 'flex' : 'none';
+          thumbNextBtn.style.display = currentBatch < totalBatches - 1 ? 'flex' : 'none';
+        }
+
+        // Event tombol prev/next
+        thumbPrevBtn.onclick = () => {
+          if (currentBatch > 0) {
+            currentBatch--;
+            updateThumbnailBatch();
+          }
+        };
+        thumbNextBtn.onclick = () => {
+          if (currentBatch < totalBatches - 1) {
+            currentBatch++;
+            updateThumbnailBatch();
+          }
+        };
+
+        // Inisialisasi batch pertama
+        if (project.images.length > maxVisible) {
+          updateThumbnailBatch();
+        } else {
+          // Jika <=5 gambar, sembunyikan tombol
+          thumbPrevBtn.style.display = 'none';
+          thumbNextBtn.style.display = 'none';
+        }
+
+        // Sync active thumbnail saat slide berubah
+        carouselElement.addEventListener('slid.bs.carousel', e => {
+          const activeIndex = e.to;
+          const thumbs = thumbnailsContainer.querySelectorAll('img');
+          thumbs.forEach((thumb, i) => {
+            thumb.classList.toggle('active-thumb', i === activeIndex);
+          });
+
+          // Jika active thumbnail di luar batch saat ini, geser batch supaya terlihat
+          const batchOfActive = Math.floor(activeIndex / maxVisible);
+          if (batchOfActive !== currentBatch) {
+            currentBatch = batchOfActive;
+            updateThumbnailBatch();
+          }
+        });
+
+        // Features
+        const featuresContainer = document.getElementById('modalFeatures');
+        featuresContainer.innerHTML = '';
+        project.features.forEach(feature => {
+          const li = document.createElement('li');
+          li.textContent = feature;
+          li.className = 'feature-item fade-in-up';
+          featuresContainer.appendChild(li);
+        });
+
+        // Technologies
+        const techContainer = document.getElementById('modalTech');
+        techContainer.innerHTML = '';
+        project.tech.forEach((tech, idx) => {
+          const span = document.createElement('span');
+          span.className = `tech-badge stagger-item delay-${Math.min(idx + 1, 5)}`;
+          span.textContent = tech;
+          techContainer.appendChild(span);
+        });
+
+        // My Contribution
+        const contributionText = `${project.details.learnings} ${project.details.impact}`;
+        document.getElementById('modalContribution').textContent = contributionText;
+
+        // Challenges
+        document.getElementById('modalChallenges').textContent = project.details.challenges;
+
+        // Solutions
+        document.getElementById('modalSolutions').textContent = project.details.solutions;
+
+        // GitHub button
+        const githubBtn = document.getElementById('modalGithubBtn');
+        if (project.github) {
+          githubBtn.href = project.github;
+          githubBtn.style.display = 'inline-block';
+        } else {
+          githubBtn.style.display = 'none';
+        }
+      }
+
+    });
+
+</script>
+</body>
+</html>
+
